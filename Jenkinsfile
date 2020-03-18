@@ -20,8 +20,8 @@ pipeline {
 				sh 'echo "Unit Test"'
                         }
                 }
-		stage ('Sonarqube') {
-			enviroment {
+		stage ('SonarQube') {
+			environment {
 				scannerHome = tool 'SonarQubeScanner'
 			}			
 			steps {
