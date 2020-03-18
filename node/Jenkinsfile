@@ -1,23 +1,23 @@
 pipeline {
 	agent any
-	environment {EXECUTE = true }
+	
 	stages {
 		stage ('build') {
 			steps {
-				sh 'echo "First "'
+				sh 'npm install'
+				sh 'echo "Build"'
 			}
 		}
-		stage ('Second') {
-			when { expression {EXECUTE}}
+		stage ('Unit Test') {
 			steps {
-                                sh 'echo "Second Step"'
-				sh 'echo "Updating Second Stage"'
+                                sh 'npm test'
+				sh 'echo "Unit Test '
                         }
                 }
-		stage ('Third') {
-			when { expression {EXECUTE == false}}
+		stage ('Sonarqube') {
+			
 			steps {
-                                sh 'echo "Third"'
+                                sh 'echo "SonarQube"'
                         }
                 }
 	}
