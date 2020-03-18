@@ -1,7 +1,13 @@
 pipeline {
 	agent any
-	cd node
+	
 	stages {
+		stage ('move') {
+			steps {
+				sh 'cd node'
+				sh 'echo "moving to node folder"'
+			}
+		}
 		stage ('build') {
 			steps {
 				sh 'npm install'
