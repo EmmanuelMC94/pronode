@@ -23,7 +23,7 @@ pipeline {
 		stage ('Sonarqube') {
 			
 			steps {
-                                sh 'echo "SonarQube"'
+                                sh 'echo "SonarQub"'
                         }
                 }
 	}
