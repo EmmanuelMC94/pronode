@@ -20,6 +20,12 @@ pipeline {
 				sh 'echo "Unit Test"'
                         }
                 }
+		stage ('Move2'){
+			steps{
+				sh 'pronode'
+				sh 'echo"moving to pronode folder"'
+			}
+		}
 		stage ('SonarQube') {
 			environment {
 				scannerHome = tool 'SonarQubeScanner'
