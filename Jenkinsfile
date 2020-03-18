@@ -16,7 +16,7 @@ pipeline {
 		}
 		stage ('Unit Test') {
 			steps {
-                                /*sh 'npm test'*/
+                                
 				sh 'echo "Unit Test '
                         }
                 }
