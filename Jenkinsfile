@@ -16,8 +16,8 @@ pipeline {
 		}
 		stage ('Unit Test') {
 			steps {
-                                
-				sh 'echo "Unit Test '
+                                /*sh 'npm test'*/
+				sh 'echo "Unit Test"'
                         }
                 }
 		stage ('Sonarqube') {
