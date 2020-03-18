@@ -22,7 +22,7 @@ pipeline {
                 }
 		stage ('Move2'){
 			steps{
-				sh 'pronode'
+				sh 'cd ..'
 				sh 'echo"moving to pronode folder"'
 			}
 		}
