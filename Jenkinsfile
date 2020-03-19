@@ -2,28 +2,31 @@ pipeline {
 	agent any
 	
 	stages {
-		stage ('move') {
-			steps {
-				sh 'cd node'
-				sh 'echo "moving to node folder"'
-			}
-		}
+		
 		stage ('build') {
 			steps {
+				sh 'cd node'
 				sh 'npm install'
 				sh 'echo "Build"'
 			}
 		}
 		stage ('Unit Test') {
 			steps {
-                                /*sh 'npm test'*/
+                                sh 'cd node'
+				/*sh 'npm test'*/
 				sh 'echo "Unit Test"'
                         }
-                }
-		stage ('Sonarqube') {
-			
+                }		
+		stage ('SonarQube') {
+			environment {
+				scannerHome = tool 'SonarQubeScanner'
+			}			
 			steps {
-                                sh 'echo "SonarQub"'
+				withSonarQubeEnv('SonarQube') {
+					sh "${scannerHome}/bin/sonar-scanner"
+					sh 'echo "SonarQube"'
+				}
+                                
                         }
                 }
 	}
