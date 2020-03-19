@@ -2,30 +2,21 @@ pipeline {
 	agent any
 	
 	stages {
-		stage ('move') {
-			steps {
-				sh 'cd node'
-				sh 'echo "moving to node folder"'
-			}
-		}
+		
 		stage ('build') {
 			steps {
+				sh 'cd node'
 				sh 'npm install'
 				sh 'echo "Build"'
 			}
 		}
 		stage ('Unit Test') {
 			steps {
-                                /*sh 'npm test'*/
+                                sh 'cd node'
+				sh 'npm test' || true
 				sh 'echo "Unit Test"'
                         }
-                }
-		stage ('Move2'){
-			steps{
-				sh 'cd ..'
-				sh 'echo"moving to pronode folder"'
-			}
-		}
+                }		
 		stage ('SonarQube') {
 			environment {
 				scannerHome = tool 'SonarQubeScanner'
